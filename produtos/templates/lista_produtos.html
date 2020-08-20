@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %} Lista de Produtos {% endblock %}
+
+{% block main %}
+    <center><h3>Produtos cadastrados</h3></center><br><br>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Produto</th>
+          <th scope="col">Preço</th>
+          <th scope="col">Data de validade</th>
+          <th scope="col">Quantidade</th>
+          <th scope="col">Ação</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for produto in produtos %}
+        <tr>
+          <th scope="row">{{produto.id}}</th>
+          <td><a href="{% url 'atualiza_produto' produto.id %}">{{ produto.produto }}</a></td>
+          <td>R${{ produto.preco}}</td>
+          <td>{{ produto.data_validade}}</a></td>
+          <td>{{ produto.quantidade}}</a></td>
+          <td><a class="btn btn-danger" href="{% url 'deleta_produto' produto.id%}">Excluir</a> </td>
+        </tr>
+      {% endfor %}
+      <tr>
+          <th scope="row"></th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><a class="btn btn-primary" href="{% url 'novo_produto' %}">Novo Produto</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+{% endblock %}

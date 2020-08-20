@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+{% block title %} Cadastrar produtos {% endblock %}
+
+{% block main %}
+    <center><h3>Formulário de produtos</h3></center><br><br>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|bootstrap}}
+        <button class="btn btn-primary" type="submit">Salvar</button>
+        <a class="btn btn-primary" href="{% url 'lista_produtos' %}">Voltar</a>
+    </form>
+
+{% endblock %}
